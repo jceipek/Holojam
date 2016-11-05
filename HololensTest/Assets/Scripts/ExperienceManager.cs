@@ -78,7 +78,7 @@ public class ExperienceManager : MonoBehaviour
     IEnumerator AskingQuestionsState() {
         _askedAQuestionTrigger = false;
         int questionCount = 0;
-        while (questionCount < 3)
+        while (questionCount < 2)
         {
             if (_askedAQuestionTrigger) // Set by AskedAQuestion()
             {

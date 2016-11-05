@@ -16,6 +16,7 @@ public class Poltergeist : MonoBehaviour {
         public AudioClip GetNextResponse()
         {
             AudioClip response = null;
+            _responseIndex = _responseIndex % 3;
             if (_responseIndex < _responses.Length)
             {
                 response = _responses[_responseIndex];
@@ -64,6 +65,16 @@ public class Poltergeist : MonoBehaviour {
 
     public IEnumerator SayResponseToQuestion (int askedInThisArea)
     {
+        switch (askedInThisArea)
+        {
+            case 1:
+                SayClipRoutine(_positiveResponses.GetNextResponse());
+                break;
+            case 2:
+                SayClipRoutine(_negativeResponses.GetNextResponse());
+                break;
+        }
+        
         // TODO(JULIAN): Speak a response with SayClipRoutine, and then yield return null from the coroutine
         yield return null;
     }
