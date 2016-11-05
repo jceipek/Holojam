@@ -48,4 +48,10 @@ public class Poltergeist : MonoBehaviour {
         // TODO(JULIAN): IMPLEMENT ME
         yield return null;
     }
+
+    void TeleportToJumpTarget (JumpTarget target)
+    {
+        transform.position = target.transform.position;
+        transform.rotation = target.transform.rotation;
+    }
 }

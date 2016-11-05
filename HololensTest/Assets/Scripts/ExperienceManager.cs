@@ -24,6 +24,7 @@ public class ExperienceManager : MonoBehaviour
 
     public void HeardPassword() {
         StopAllCoroutines();
+        StartCoroutine(FinaleRoutine());
     }
 
     IEnumerator Start ()
