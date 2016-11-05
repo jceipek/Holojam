@@ -24,12 +24,18 @@ public class Poltergeist : MonoBehaviour {
             }
             return response;
         }
+        public AudioClip RandomClip ()
+        {
+            return _responses[Random.Range(0, _responses.Length)];
+        }
     }
 
     [SerializeField]
     ResponseSet _negativeResponses;
     [SerializeField]
     ResponseSet _positiveResponses;
+    [SerializeField]
+    ResponseSet _laughter;
 
 
     void Awake ()
@@ -85,15 +91,25 @@ public class Poltergeist : MonoBehaviour {
         yield return null;
     }
 
-    public IEnumerator JumpToNewLocationRoutine (bool shouldLaugh)
+    public IEnumerator JumpToNewLocationRoutine (bool shouldLaugh, JumpTarget[] allLocations)
     {
-        // TODO(JULIAN): IMPLEMENT ME
-        yield return null;
+        int choice = 0;
+        while (allLocations[choice] == _currTarget)
+        {
+            choice = Random.Range(0, allLocations.Length);
+        }
+        TeleportToJumpTarget(allLocations[choice]);
+
+        if (shouldLaugh)
+        {
+            yield return StartCoroutine(SayClipRoutine(_laughter.RandomClip()));
+        }
     }
 
     public void TeleportToJumpTarget (JumpTarget target)
     {
         transform.position = target.transform.position;
         transform.rotation = target.transform.rotation;
+        _currTarget = target;
     }
 }
