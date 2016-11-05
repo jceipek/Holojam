@@ -137,7 +137,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee168188a55035247b576ee39cc7e9e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _jumpTargets: []
+  _jumpTargets:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   _poltergeist: {fileID: 0}
   _player: {fileID: 0}
   _timeUntilNextJump: 10
