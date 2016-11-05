@@ -9,7 +9,6 @@ public class ExperienceManager : MonoBehaviour
     [SerializeField] Poltergeist _poltergeist;
     [SerializeField] Player _player;
     [SerializeField] float _timeUntilNextJump = 10f;
-    [SerializeField] GameObject _cursor;
 
     bool _experienceBeginTrigger = false;
     public void HeardExperienceBegin()
@@ -49,7 +48,6 @@ public class ExperienceManager : MonoBehaviour
                 {
                     jumpTarget.SetTapToPlaceAbility(false);
                 }
-                _cursor.SetActive(false);
                 yield return StartCoroutine(ExperienceState());
             }
             yield return null;
