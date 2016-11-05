@@ -5,55 +5,11 @@ using HoloToolkit.Unity;
 
 public class ExperienceManager : MonoBehaviour
 {
-
-    enum MainState
-    {
-        PlacingObjects,
-        ExperienceLoop
-    }
-
-    MainState _mainState = MainState.PlacingObjects;
-
     [SerializeField] JumpTarget[] _jumpTargets;
     [SerializeField] Poltergeist _poltergeist;
     [SerializeField] Player _player;
+    [SerializeField] float _timeUntilNextJump = 10f;
 
-    void MainStateTransitionTo(MainState oldState, MainState newState)
-    {
-        if (newState == MainState.ExperienceLoop)
-        {
-            foreach (var jumpTarget in _jumpTargets)
-            {
-                jumpTarget.SetTapToPlaceAbility(false);
-            }
-        }
-        else if (newState == MainState.PlacingObjects)
-        {
-            foreach (var jumpTarget in _jumpTargets)
-            {
-                jumpTarget.SetTapToPlaceAbility(true);
-            }
-        }
-        _mainState = newState;
-    }
-
-    void Update()
-    {
-        switch (_mainState)
-        {
-            case MainState.PlacingObjects:
-                PlacingObjectUpdate();
-                if (_experienceBeginTrigger)
-                {
-                    _experienceBeginTrigger = false;
-                    MainStateTransitionTo(_mainState, MainState.ExperienceLoop);
-                }
-                break;
-            case MainState.ExperienceLoop:
-                ExperienceLoopUpdate();
-                break;
-        }
-    }
 
     bool _experienceBeginTrigger = false;
     public void HeardExperienceBegin()
@@ -61,9 +17,56 @@ public class ExperienceManager : MonoBehaviour
         _experienceBeginTrigger = true;
     }
 
-    void PlacingObjectUpdate()
+    IEnumerator Start ()
     {
+        yield return StartCoroutine(PlacingObjectState());
+    }
 
+    IEnumerator PlacingObjectState ()
+    {
+        foreach (var jumpTarget in _jumpTargets)
+        {
+            jumpTarget.SetTapToPlaceAbility(true);
+        }
+        while (true)
+        {
+            if (_experienceBeginTrigger)
+            {
+                foreach (var jumpTarget in _jumpTargets)
+                {
+                    jumpTarget.SetTapToPlaceAbility(false);
+                }
+                yield return StartCoroutine(ExperienceState());
+            }
+            yield return null;
+        }
+    }
+
+    IEnumerator ExperienceState ()
+    {
+        float timer = 0f;
+        while (true)
+        {
+            if (PlayerInRangeOfPoltergeist())
+            {
+                // Now we need to ask questions
+                yield return StartCoroutine(AskingQuestionsState());
+            }
+            else if (TimeUntilJumpElapsed(timer))
+            {
+                // Now the poltergeist needs to jump to a random location
+            }
+            timer += Time.deltaTime;
+            yield return null;
+        }
+    }
+
+    IEnumerator AskingQuestionsState() {
+        yield break;
+    }
+
+    IEnumerator JumpOnFailState() {
+        yield break;
     }
 
     bool PlayerInRangeOfPoltergeist ()
@@ -82,38 +85,4 @@ public class ExperienceManager : MonoBehaviour
     {
         //TODO(JULIAN): IMPLEMENT ME
     }
-
-    enum ExperienceSubState {
-        Seeking,
-        Asking
-    }
-
-    ExperienceSubState _experienceSubState = ExperienceSubState.Seeking;
-
-
-    [SerializeField] float _timeUntilNextJump = 10f;
-
-    float _timer = 0f;
-    void ExperienceLoopUpdate()
-    {
-        switch (_experienceSubState)
-        {
-            case ExperienceSubState.Seeking:
-                if (PlayerInRangeOfPoltergeist())
-                {
-                    // Now we need to ask questions
-                }
-                else if (TimeUntilJumpElapsed(_timer))
-                {
-                    // Now the poltergeist needs to jump to a random location
-                }
-                break;
-            case ExperienceSubState.Asking:
-                break;
-        }
-        _timer += Time.deltaTime;
-
-    }
-
-
 }
