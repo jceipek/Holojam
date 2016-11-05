@@ -55,6 +55,7 @@ public class ExperienceManager : MonoBehaviour
 
     IEnumerator ExperienceState ()
     {
+        _poltergeist.TeleportToJumpTarget(_jumpTargets[0]);
         float timer = 0f;
         while (true)
         {
