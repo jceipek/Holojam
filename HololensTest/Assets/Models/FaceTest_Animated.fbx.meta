@@ -113,6 +113,8 @@ ModelImporter:
     100210: transform3
     100212: transform4
     100214: transform5
+    100216: polySurface1
+    100218: polySurface3
     400000: //RootNode
     400002: Head
     400004: Hips
@@ -221,17 +223,29 @@ ModelImporter:
     400210: transform3
     400212: transform4
     400214: transform5
+    400216: polySurface1
+    400218: polySurface3
     2300000: pCube3
     2300002: pSphere4
     2300004: pSphere5
+    2300006: polySurface1
+    2300008: polySurface2
+    2300010: polySurface3
+    2300012: polySurface4
     3300000: pCube3
     3300002: pSphere4
     3300004: pSphere5
+    3300006: polySurface1
+    3300008: polySurface2
+    3300010: polySurface3
+    3300012: polySurface4
     4300000: polySurface2
     4300002: polySurface4
     4300004: pSphere4
     4300006: pSphere5
     4300008: pCube3
+    4300010: polySurface1
+    4300012: polySurface3
     7400000: Take 001
     9500000: //RootNode
     13700000: polySurface2
