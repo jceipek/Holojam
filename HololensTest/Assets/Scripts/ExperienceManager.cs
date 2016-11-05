@@ -83,7 +83,7 @@ public class ExperienceManager : MonoBehaviour
             if (_askedAQuestionTrigger) // Set by AskedAQuestion()
             {
                 //XXX(JULIAN): What should we do if the player tries to interrupt the poltergeist response?
-                yield return _poltergeist.SayResponseToQuestion(); // won't advance till the response has finished
+                yield return _poltergeist.SayResponseToQuestion(askedInThisArea: questionCount); // won't advance till the response has finished
                 questionCount++;
             }
             yield return null;

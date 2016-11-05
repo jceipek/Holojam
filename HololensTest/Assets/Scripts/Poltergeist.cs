@@ -5,6 +5,31 @@ using UnityEngine;
 public class Poltergeist : MonoBehaviour {
 
     JumpTarget _currTarget;
+    AudioSource _source;
+
+    [System.Serializable]
+    class ResponseSet
+    {
+        [SerializeField]
+        AudioClip[] _responses;
+        int _responseIndex = 0;
+        public AudioClip GetNextResponse()
+        {
+            AudioClip response = null;
+            if (_responseIndex < _responses.Length)
+            {
+                response = _responses[_responseIndex];
+                _responseIndex++;
+            }
+            return response;
+        }
+    }
+
+    [SerializeField]
+    ResponseSet _negativeResponses;
+    [SerializeField]
+    ResponseSet _positiveResponses;
+
 
     public JumpTarget CurrJumpTarget
     {
@@ -14,16 +39,6 @@ public class Poltergeist : MonoBehaviour {
         }
     }
 
-    // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
     public Vector3 Position
     {
         get {
@@ -31,9 +46,20 @@ public class Poltergeist : MonoBehaviour {
         }
     }
 
-    public IEnumerator SayResponseToQuestion ()
+    public IEnumerator SayClipRoutine (AudioClip clip)
     {
-        // TODO(JULIAN): Speak a response, wait for it to complete in a yield return null loop, and then yield return null from the coroutine
+        // TODO(JULIAN): What if a clip is already playing?
+        _source.clip = clip;
+        _source.Play();
+        while (_source.isPlaying)
+        {
+            yield return null;
+        }
+    }
+
+    public IEnumerator SayResponseToQuestion (int askedInThisArea)
+    {
+        // TODO(JULIAN): Speak a response with SayClipRoutine, and then yield return null from the coroutine
         yield return null;
     }
 
