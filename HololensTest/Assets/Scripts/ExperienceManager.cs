@@ -40,6 +40,7 @@ public class ExperienceManager : MonoBehaviour
         foreach (var jumpTarget in _jumpTargets)
         {
             jumpTarget.SetTapToPlaceAbility(true);
+            jumpTarget.Reset();
         }
         while (true)
         {
