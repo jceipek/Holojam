@@ -4,8 +4,18 @@ using UnityEngine;
 
 public class Poltergeist : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
+    JumpTarget _currTarget;
+
+    public JumpTarget CurrJumpTarget
+    {
+        get
+        {
+            return _currTarget;
+        }
+    }
+
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
@@ -19,5 +29,23 @@ public class Poltergeist : MonoBehaviour {
         get {
             return transform.position;
         }
+    }
+
+    public IEnumerator SayResponseToQuestion ()
+    {
+        // TODO(JULIAN): Speak a response, wait for it to complete in a yield return null loop, and then yield return null from the coroutine
+        yield return null;
+    }
+
+    public IEnumerator GivePasswordChunkRoutine ()
+    {
+        // TODO(JULIAN): IMPLEMENT ME
+        yield return null;
+    }
+
+    public IEnumerator JumpToNewLocationRoutine (bool shouldLaugh)
+    {
+        // TODO(JULIAN): IMPLEMENT ME
+        yield return null;
     }
 }
