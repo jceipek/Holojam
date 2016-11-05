@@ -41,6 +41,10 @@ public class Placeable : MonoBehaviour
 
     public void ClearAnchor ()
     {
+        if (anchorManager == null)
+        {
+            anchorManager = WorldAnchorManager.Instance;
+        }
         anchorManager.RemoveAnchor(gameObject);
     }
 
