@@ -37,6 +37,8 @@ public class Placeable : MonoBehaviour
     /// </summary>
     private bool placing;
 
+    public bool CanPlace = true;
+
     public void InitWithAnchorName (string anchorName)
     {
         _anchorName = anchorName;
@@ -71,6 +73,11 @@ public class Placeable : MonoBehaviour
     // Called by GazeGestureManager when the user performs a tap gesture.
     public void OnSelect()
     {
+        if (!CanPlace)
+        {
+            return;
+        }
+
         // On each tap gesture, toggle whether the user is in placing mode.
         placing = !placing;
 
@@ -96,7 +103,7 @@ public class Placeable : MonoBehaviour
     {
         // If the user is in placing mode,
         // update the placement to match the user's gaze.
-        if (placing)
+        if (placing && CanPlace)
         {
             // Do a raycast into the world that will only hit the Spatial Mapping mesh.
             var headPosition = Camera.main.transform.position;
