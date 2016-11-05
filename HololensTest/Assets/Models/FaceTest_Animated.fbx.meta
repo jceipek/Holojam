@@ -228,6 +228,7 @@ ModelImporter:
     2300000: pCube3
     2300002: pSphere4
     2300004: pSphere5
+<<<<<<< HEAD
     2300006: polySurface1
     2300008: polySurface2
     2300010: polySurface3
@@ -239,13 +240,24 @@ ModelImporter:
     3300008: polySurface2
     3300010: polySurface3
     3300012: polySurface4
+=======
+    2300006: //RootNode
+    3300000: pCube3
+    3300002: pSphere4
+    3300004: pSphere5
+    3300006: //RootNode
+>>>>>>> origin/master
     4300000: polySurface2
     4300002: polySurface4
     4300004: pSphere4
     4300006: pSphere5
     4300008: pCube3
+<<<<<<< HEAD
     4300010: polySurface1
     4300012: polySurface3
+=======
+    4300010: pSphere7
+>>>>>>> origin/master
     7400000: Take 001
     9500000: //RootNode
     13700000: polySurface2
