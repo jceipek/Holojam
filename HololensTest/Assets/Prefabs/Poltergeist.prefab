@@ -223,6 +223,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _negativeResponses:
-    _responses: []
+    _responses:
+    - {fileID: 8300000, guid: d51bb72067b14b04d8d69e6cc2dbd162, type: 3}
+    - {fileID: 8300000, guid: d7211fe6e82eee741804c2012217c3b8, type: 3}
+    - {fileID: 8300000, guid: 43dd1c8c228f07b42bae8cbe1bc8abc2, type: 3}
+    - {fileID: 8300000, guid: de07c45408529b04385390e34dc5219e, type: 3}
   _positiveResponses:
+    _responses:
+    - {fileID: 8300000, guid: 524234b1981aad44980c75c4c9b2bc7f, type: 3}
+    - {fileID: 8300000, guid: 6d5def67cb094f6469c9586329d6b7b9, type: 3}
+    - {fileID: 8300000, guid: d8d397ecab2618644a39c7e90a8d2cc5, type: 3}
+  _laughter:
     _responses: []
