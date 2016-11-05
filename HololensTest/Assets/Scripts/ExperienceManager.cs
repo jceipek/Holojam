@@ -105,8 +105,7 @@ public class ExperienceManager : MonoBehaviour
 
     bool PlayerInRangeOfPoltergeist()
     {
-        //TODO(JULIAN): IMPLEMENT ME
-        return false;
+        return (Vector3.Distance(_player.Position, _poltergeist.Position) < 2f);
     }
 
     bool TimeUntilJumpElapsed(float time)
