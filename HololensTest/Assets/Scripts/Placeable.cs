@@ -114,12 +114,13 @@ public class Placeable : MonoBehaviour
                 // collider so it sits properly on surfaces.
                 this.transform.position = hitInfo.point;
 
+                transform.rotation = Quaternion.LookRotation(Camera.main.transform.position - transform.position, Camera.main.transform.up);
             
                 // Rotate this object to face the user.
-                Quaternion toQuat = Camera.main.transform.localRotation;
-                toQuat.x = 0;
-                toQuat.z = 0;
-                this.transform.rotation = toQuat;
+                //Quaternion toQuat = Camera.main.transform.localRotation;
+                //toQuat.x = 0;
+                //toQuat.z = 0;
+                //this.transform.rotation = toQuat;
             }
         }
     }
