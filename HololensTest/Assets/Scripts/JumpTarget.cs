@@ -8,6 +8,7 @@ public class JumpTarget : MonoBehaviour {
     TapToPlace _tapToPlace;
     void Awake() {
         _tapToPlace = GetComponent<TapToPlace>();
+        _tapToPlace.SavedAnchorFriendlyName = gameObject.name;
     }
 
     public void SetTapToPlaceAbility (bool to)
