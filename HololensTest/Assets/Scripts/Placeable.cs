@@ -46,6 +46,7 @@ public class Placeable : MonoBehaviour
             anchorManager = WorldAnchorManager.Instance;
         }
         anchorManager.RemoveAnchor(gameObject);
+        transform.position = Camera.main.transform.position + Vector3.forward;
     }
 
     public void InitWithAnchorName (string anchorName)

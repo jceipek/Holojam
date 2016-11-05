@@ -66,6 +66,7 @@ public class Poltergeist : MonoBehaviour {
 
     public IEnumerator SayClipRoutine (AudioClip clip)
     {
+        Debug.Log("Start Saying " + clip.name);
         // TODO(JULIAN): What if a clip is already playing?
         _source.clip = clip;
         _source.Play();
