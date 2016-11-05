@@ -34,6 +34,7 @@ public class ExperienceManager : MonoBehaviour
 
     IEnumerator PlacingObjectState ()
     {
+        _poltergeist.gameObject.SetActive(false);
         _experienceBeginTrigger = false;
         foreach (var jumpTarget in _jumpTargets)
         {
@@ -55,6 +56,7 @@ public class ExperienceManager : MonoBehaviour
 
     IEnumerator ExperienceState ()
     {
+        _poltergeist.gameObject.SetActive(true);
         _poltergeist.TeleportToJumpTarget(_jumpTargets[0]);
         float timer = 0f;
         while (true)
@@ -68,7 +70,7 @@ public class ExperienceManager : MonoBehaviour
             {
                 // Now the poltergeist needs to jump to a random location
                 // TODO(JULIAN): Laugh all over
-                yield return StartCoroutine(_poltergeist.JumpToNewLocationRoutine(shouldLaugh: false));
+                yield return StartCoroutine(_poltergeist.JumpToNewLocationRoutine(shouldLaugh: false, allLocations: _jumpTargets));
             }
             timer += Time.deltaTime;
             yield return null;
@@ -89,7 +91,7 @@ public class ExperienceManager : MonoBehaviour
             yield return null;
         }
         yield return StartCoroutine(_poltergeist.GivePasswordChunkRoutine());
-        yield return StartCoroutine(_poltergeist.JumpToNewLocationRoutine(shouldLaugh: true));
+        yield return StartCoroutine(_poltergeist.JumpToNewLocationRoutine(shouldLaugh: true, allLocations: _jumpTargets));
         //NOTE(JULIAN): This returns to Experience State
     }
 
