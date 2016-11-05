@@ -31,6 +31,11 @@ public class Poltergeist : MonoBehaviour {
     ResponseSet _positiveResponses;
 
 
+    void Awake ()
+    {
+        _source = GetComponent<AudioSource>();
+    }
+
     public JumpTarget CurrJumpTarget
     {
         get
