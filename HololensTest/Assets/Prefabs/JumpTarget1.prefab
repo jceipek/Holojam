@@ -155,6 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1995bafa0fa31c84f9374efc74e88984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _visuals: {fileID: 1143650328361684}
 --- !u!114 &114424671156416646
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -166,4 +167,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fcb9cfa36cb06347af6f26fceda6ccd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SavedAnchorFriendlyName: SavedAnchorFriendlyName
