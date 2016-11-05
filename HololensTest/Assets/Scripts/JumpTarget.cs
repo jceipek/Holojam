@@ -16,7 +16,12 @@ public class JumpTarget : MonoBehaviour {
 
     public void SetTapToPlaceAbility (bool to)
     {
-        _placeable.enabled = to;
+        _placeable.CanPlace = to;
         _visuals.SetActive(to);
+    }
+
+    public void Reset ()
+    {
+        _placeable.ClearAnchor();
     }
 }

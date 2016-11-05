@@ -39,6 +39,11 @@ public class Placeable : MonoBehaviour
 
     public bool CanPlace = true;
 
+    public void ClearAnchor ()
+    {
+        anchorManager.RemoveAnchor(gameObject);
+    }
+
     public void InitWithAnchorName (string anchorName)
     {
         _anchorName = anchorName;
