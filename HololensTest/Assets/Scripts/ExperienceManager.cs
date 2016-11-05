@@ -73,7 +73,7 @@ public class ExperienceManager : MonoBehaviour
             {
                 // Now the poltergeist needs to jump to a random location
                 // TODO(JULIAN): Laugh all over
-                yield return StartCoroutine(_poltergeist.JumpToNewLocationRoutine(shouldLaugh: false, allLocations: _jumpTargets));
+                yield return StartCoroutine(_poltergeist.JumpToNewLocationRoutine(shouldLaugh: true, allLocations: _jumpTargets));
             }
             timer += Time.deltaTime;
             yield return null;
@@ -83,7 +83,7 @@ public class ExperienceManager : MonoBehaviour
     IEnumerator AskingQuestionsState() {
         _askedAQuestionTrigger = false;
         int questionCount = 0;
-        while (questionCount < 3)
+        while (questionCount < 2)
         {
             if (_askedAQuestionTrigger) // Set by AskedAQuestion()
             {

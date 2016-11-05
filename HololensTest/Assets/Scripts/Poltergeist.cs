@@ -20,6 +20,11 @@ public class Poltergeist : MonoBehaviour {
             {
                 response = _responses[_responseIndex];
                 _responseIndex++;
+            } else
+            {
+                _responseIndex = 0;
+                response = _responses[_responseIndex];
+                _responseIndex++;
             }
             return response;
         }
@@ -35,6 +40,8 @@ public class Poltergeist : MonoBehaviour {
     ResponseSet _positiveResponses;
     [SerializeField]
     ResponseSet _laughter;
+    [SerializeField]
+    ResponseSet _passwordSections;
 
 
     void Awake ()
@@ -70,14 +77,13 @@ public class Poltergeist : MonoBehaviour {
 
     public IEnumerator SayResponseToQuestion (int askedInThisArea)
     {
-        // TODO(JULIAN): Speak a response with SayClipRoutine, and then yield return null from the coroutine
-        yield return null;
+        var clip = askedInThisArea == 0 ? _negativeResponses.GetNextResponse() : _positiveResponses.GetNextResponse();
+        yield return StartCoroutine(SayClipRoutine(clip));
     }
 
     public IEnumerator GivePasswordChunkRoutine ()
     {
-        // TODO(JULIAN): IMPLEMENT ME
-        yield return null;
+        yield return StartCoroutine(SayClipRoutine(_passwordSections.GetNextResponse()));
     }
 
     public IEnumerator JumpToNewLocationRoutine (bool shouldLaugh, JumpTarget[] allLocations)
