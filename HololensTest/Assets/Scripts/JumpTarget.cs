@@ -5,14 +5,18 @@ using HoloToolkit.Unity;
 
 public class JumpTarget : MonoBehaviour {
 
-    TapToPlace _tapToPlace;
+    [SerializeField]
+    GameObject _visuals;
+
+    Placeable _placeable;
     void Awake() {
-        _tapToPlace = GetComponent<TapToPlace>();
-        _tapToPlace.SavedAnchorFriendlyName = gameObject.name;
+        _placeable = GetComponent<Placeable>();
+        _placeable.InitWithAnchorName(gameObject.name);
     }
 
     public void SetTapToPlaceAbility (bool to)
     {
-        _tapToPlace.enabled = to;
+        _placeable.enabled = to;
+        _visuals.SetActive(to);
     }
 }
