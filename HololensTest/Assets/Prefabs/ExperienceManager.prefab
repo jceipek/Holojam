@@ -165,7 +165,7 @@ MonoBehaviour:
   - {fileID: 0}
   _poltergeist: {fileID: 0}
   _player: {fileID: 0}
-  _timeUntilNextJump: 10
+  _timeUntilNextJump: 20
   _cursor: {fileID: 0}
 --- !u!114 &114813330790081924
 MonoBehaviour:
