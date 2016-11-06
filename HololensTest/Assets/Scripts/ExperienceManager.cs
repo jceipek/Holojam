@@ -94,6 +94,11 @@ public class ExperienceManager : MonoBehaviour
             }
             yield return null;
         }
+        while (_askedAQuestionTrigger == false)
+        {
+            yield return null;
+        }
+        _askedAQuestionTrigger = false;
         yield return StartCoroutine(_poltergeist.GivePasswordChunkRoutine());
         yield return StartCoroutine(_poltergeist.JumpToNewLocationRoutine(shouldLaugh: true, allLocations: _jumpTargets));
         //NOTE(JULIAN): This returns to Experience State
