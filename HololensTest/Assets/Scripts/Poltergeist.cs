@@ -42,6 +42,8 @@ public class Poltergeist : MonoBehaviour {
     ResponseSet _laughter;
     [SerializeField]
     ResponseSet _passwordSections;
+    [SerializeField]
+    AudioClip _finaleAudio;
 
 
     void Awake ()
@@ -100,6 +102,11 @@ public class Poltergeist : MonoBehaviour {
         {
             yield return StartCoroutine(SayClipRoutine(_laughter.RandomClip()));
         }
+    }
+
+    public IEnumerator SayFinaleRoutine ()
+    {
+        yield return StartCoroutine(SayClipRoutine(_finaleAudio));
     }
 
     public void TeleportToJumpTarget (JumpTarget target)

@@ -100,6 +100,7 @@ public class ExperienceManager : MonoBehaviour
 
     IEnumerator FinaleRoutine()
     {
+        yield return StartCoroutine(_poltergeist.SayFinaleRoutine());
         // TODO(JULIAN): IMPLEMENT ME!!!
         yield return null;
     }
