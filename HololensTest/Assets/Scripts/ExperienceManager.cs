@@ -90,6 +90,7 @@ public class ExperienceManager : MonoBehaviour
                 //XXX(JULIAN): What should we do if the player tries to interrupt the poltergeist response?
                 yield return _poltergeist.SayResponseToQuestion(askedInThisArea: questionCount); // won't advance till the response has finished
                 questionCount++;
+                _askedAQuestionTrigger = false;
             }
             yield return null;
         }
@@ -102,6 +103,7 @@ public class ExperienceManager : MonoBehaviour
     {
         yield return StartCoroutine(_poltergeist.SayFinaleRoutine());
         // TODO(JULIAN): IMPLEMENT ME!!!
+        _poltergeist.gameObject.SetActive(false);
         yield return null;
     }
 
